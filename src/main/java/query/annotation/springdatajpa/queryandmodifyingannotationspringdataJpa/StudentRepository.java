@@ -31,6 +31,12 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     and for more than one result :
     1.List<> - return List or empty list
     2. Stream<> - return stream or empty Stream
+
+    *@Modifying annotation
+    this annotation is basically used to enhance the @Query annotation.
+    when we want to use insert, update, delete, and perform ddl operation then we can use this annotation.
+    @Transactional annotation is must to use with @Modifying annotation otherwise will get TransactionRequiredException.
+
     /
      */
 
@@ -48,4 +54,7 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("update Student s set s.name = :name where s.id = :id")
     void updateStudentName(@Param("name") String name,@Param("id") Long id);
 
+    @Modifying
+    @Query("delete from Student s where s.id = :sid")
+    int deleteStudentById(@Param("sid") Long id);
 }

@@ -8,7 +8,8 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    private  StudentService studentService;
+    @Autowired
+    private final StudentService studentService;
 
     public Controller(StudentService studentService) {
         this.studentService = studentService;
@@ -43,5 +44,11 @@ public class Controller {
     public String updateStudent(@PathVariable String name,@PathVariable Long id){
         studentService.updateStudent(name,id);
         return "Student updated";
+    }
+
+    @DeleteMapping("deleteStudentById/{id}")
+    public String deleteStudentById(@PathVariable Long id){
+        int i = studentService.deleteStudentById(id);
+        return i+" "+"Student deleted";
     }
 }
