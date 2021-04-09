@@ -1,4 +1,4 @@
-package query.annotation.springdatajpa.queryandmodifyingannotationspringdataJpa;
+package query.annotation.springdatajpa.queryandmodifying.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package query.annotation.springdatajpa.queryandmodifyingannotationspringdataJpa;
+package query.annotation.springdatajpa.queryandmodifying;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
