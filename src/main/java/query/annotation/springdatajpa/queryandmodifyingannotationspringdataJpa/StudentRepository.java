@@ -12,7 +12,6 @@ import java.util.List;
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
 
-
     /*@Query annotation is used to perform the select operation in jpa.
     @Query annotation support both jpql and native query approach.
     @Query annotation it is possible to use pagination and sorting using jpql only not for the native query approach.
@@ -45,8 +44,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Query("select s from Student s where s.schoolName like %:schoolName%")
     List<Student> getStudentBySchoolName(@Param("schoolName") String schoolName);
 
- /*   @Modifying
-    @Query("update Student s set s.name = karim where id = : id")
-    void updateStudent(Long id);*/
+    @Modifying
+    @Query("update Student s set s.name = :name where s.id = :id")
+    void updateStudentName(@Param("name") String name,@Param("id") Long id);
 
 }

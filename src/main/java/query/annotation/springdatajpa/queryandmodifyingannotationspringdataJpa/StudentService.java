@@ -1,15 +1,21 @@
 package query.annotation.springdatajpa.queryandmodifyingannotationspringdataJpa;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @Service
+@Transactional
 public class StudentService {
 
-    @Autowired
-    private StudentRepository studentRepository;
+
+    private final StudentRepository studentRepository;
+
+    public StudentService(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
+    }
 
     public List<Student> getAllStudents(){
         return studentRepository.findAll();
@@ -29,7 +35,8 @@ public class StudentService {
     public List<Student> getStudentBySchoolName(String schoolName) {
         return studentRepository.getStudentBySchoolName(schoolName);
     }
-    /*public void updateStudent(Student student){
-        studentRepository.updateStudent(student.getId());
-    }*/
+
+    public void updateStudent(String name ,Long id){
+        studentRepository.updateStudentName(name,id);
+    }
 }

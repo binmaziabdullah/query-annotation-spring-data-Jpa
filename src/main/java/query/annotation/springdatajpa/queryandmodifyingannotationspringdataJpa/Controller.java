@@ -8,9 +8,7 @@ import java.util.List;
 @RestController
 public class Controller {
 
-    @Autowired
-    private final StudentService studentService;
-    @Autowired
+    private  StudentService studentService;
 
     public Controller(StudentService studentService) {
         this.studentService = studentService;
@@ -41,9 +39,9 @@ public class Controller {
         return studentService.getAllStudents();
     }
 
-    /*@PutMapping("/updateStudent")
-    public String updateStudent(@RequestBody Student student){
-        studentService.updateStudent(student);
+    @PutMapping("/updateStudent/{name}/{id}")
+    public String updateStudent(@PathVariable String name,@PathVariable Long id){
+        studentService.updateStudent(name,id);
         return "Student updated";
-    }*/
+    }
 }
