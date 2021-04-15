@@ -38,6 +38,18 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     * internally it is interpreted as null*/
     List<Employee> findByEmpNameAndEmpSurname(String empName, String empSurname);
 
-    //we can also customize the result or limit our results set using Top keyword followed by number of records
-    List<Employee> findTop3ByEmpAge(Integer empAge);
+    /*we can also customize the result or Limit our results set using Top And First keyword followed by
+    number of records if we are returning the number of result otherwise it return one result only*/
+
+    //return top 3 employee with maximum Age
+    List<Employee> findTop3ByOrderByEmpAgeDesc();
+
+    //return top 3 employee with maximum salary
+    List<Employee> findTop3ByOrderByEmpSalDesc();
+
+    //using First Keyword it returns the Employee with highest salary same as Top.
+    List<Employee> findFirstByOrderByEmpSalDesc();
+
+    //return employees by name which not having the provided string
+    List<Employee> findEmployeeByEmpNameNotContaining(String empName);
 }

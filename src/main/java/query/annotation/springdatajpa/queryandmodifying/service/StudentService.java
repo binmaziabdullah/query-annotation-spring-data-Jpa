@@ -39,8 +39,8 @@ public class StudentService {
     public void updateStudent(String name, Long id) {
         studentRepository.updateStudentName(name, id);
     }
-
     public Integer deleteStudentById(Long id){
         return studentRepository.deleteStudentById(id);
     }
+
 }

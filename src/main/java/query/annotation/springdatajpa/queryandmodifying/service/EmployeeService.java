@@ -12,6 +12,7 @@ import java.util.List;
 @Transactional
 public class EmployeeService {
 
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -45,7 +46,17 @@ public class EmployeeService {
     public List<Employee> findByNameAndEmpSurname(String empName, String empSurname){
         return employeeRepository.findByEmpNameAndEmpSurname(empName,empSurname);
     }
-    public List<Employee> findLimitedEmployeeByAge(Integer empAge){
-        return employeeRepository.findTop3ByEmpAge(empAge);
+    public List<Employee> findTop3EmployeeMaxAge(){
+        return employeeRepository.findTop3ByOrderByEmpAgeDesc();
     }
+    public List<Employee> findTop3EmployeeMaxSal(){
+        return employeeRepository.findTop3ByOrderByEmpSalDesc();
+    }
+    public List<Employee> findLimitedEmployeeByFirstKeyword(){
+        return employeeRepository.findFirstByOrderByEmpSalDesc();
+    }
+    public List<Employee> findEmployeeByNameNotContaining(String empName){
+        return employeeRepository.findEmployeeByEmpNameNotContaining(empName);
+    }
+
 }

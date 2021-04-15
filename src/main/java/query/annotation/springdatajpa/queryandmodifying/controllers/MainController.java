@@ -91,6 +91,11 @@ public class MainController {
         return employeeService.findAllEmployeeByEmpNameContaining(empName);
     }
 
+    @GetMapping("findAllEmployeeByNameNotContaining/{empName}")
+    public List<Employee> findAllEmployeeByNameNotContaining(@PathVariable String empName){
+        return employeeService.findEmployeeByNameNotContaining(empName);
+    }
+
     @DeleteMapping("/deleteEmpById/{empId}")
     public String deleteEmpById(@PathVariable Long empId){
         Long status = employeeService.deleteEmpById(empId);
@@ -100,9 +105,17 @@ public class MainController {
     public List<Employee> findByEmpNameAndSalary(@PathVariable String empName, @PathVariable String empSurname){
         return employeeService.findByNameAndEmpSurname(empName,empSurname);
     }
-    @GetMapping("/findLimitedEmployeeByAge/{empAge}")
-    public List<Employee> findLimitedEmployeeByAge(@PathVariable Integer empAge){
-        return employeeService.findLimitedEmployeeByAge(empAge);
+    @GetMapping("/findTop3EmployeeMaxAge")
+    public List<Employee> findTop3EmployeeMaxAge(){
+        return employeeService.findTop3EmployeeMaxAge();
+    }
+    @GetMapping("/findTop3EmployeeMaxSal")
+    public List<Employee> findTop3EmployeeMaxSal(){
+        return employeeService.findTop3EmployeeMaxSal();
+    }
+    @GetMapping("/findLimitedEmployeeUsingFirstKeyword")
+    public List<Employee> findLimitedEmployeeByFirstKeyword(){
+        return employeeService.findLimitedEmployeeByFirstKeyword();
     }
 
 }
